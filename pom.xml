@@ -17,7 +17,7 @@
 		<java.version>21</java.version>
 		<build.helper.maven.plugin.version>3.5.0</build.helper.maven.plugin.version>
 		<buildnumber.maven.plugin.version>3.1.0</buildnumber.maven.plugin.version>
-		<maven.plugin.release.version>3.0.1</maven.plugin.release.version>
+		<maven.release.plugin.version>3.0.1</maven.release.plugin.version>
 		<h2.version>2.2.224</h2.version>
 	</properties>
 	<scm>
