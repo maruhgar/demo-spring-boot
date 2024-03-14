@@ -56,7 +56,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${buildNumber}-${parsedVersion.qualifier}</finalName>
+		<finalName>${project.artifactId}-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${buildNumber}-${parsedVersion.qualifier}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -78,11 +78,7 @@
 				  <doCheck>true</doCheck>
 				  <doUpdate>true</doUpdate>
 				  <failTheBuild>true</failTheBuild>
-				  <!-- <revisionOnScmFailure>na</revisionOnScmFailure> -->
-				  <!-- <format>{0, number}</format>
-				  <items>
-					<item>buildNumber</item>
-				  </items> -->
+				  <shortRevisionLength>5</shortRevisionLength>
 				</configuration>
 			  </plugin>
 			  <plugin>
