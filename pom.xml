@@ -15,7 +15,16 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
+		<build.helper.maven.plugin.version>3.5.0</build.helper.maven.plugin.version>
+		<buildnumber.maven.plugin.version>3.1.0</buildnumber.maven.plugin.version>
+		<h2.version>2.2.224</h2.version>
 	</properties>
+	<scm>
+		<connection>scm:git:https://github.com/maruhgar/demo-spring-boot.git</connection>
+		<developerConnection>scm:svn:github.com/maruhgar/demo-spring-boot.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/maruhgar/demo-spring-boot</url>
+	  </scm>	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -36,7 +45,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>2.2.224</version>
+			<version>${h2.version}</version>
 			<!-- <scope>test</scope> -->
 		</dependency>
 		<dependency>
@@ -47,11 +56,48 @@
 	</dependencies>
 
 	<build>
+		<finalName>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${buildNumber}-${parsedVersion.qualifier}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>${buildnumber.maven.plugin.version}</version>
+				<executions>
+				  <execution>
+					<phase>validate</phase>
+					<goals>
+					  <goal>create</goal>
+					</goals>
+				  </execution>
+				</executions>
+				<configuration>
+				  <doCheck>true</doCheck>
+				  <doUpdate>true</doUpdate>
+				  <failTheBuild>true</failTheBuild>
+				  <!-- <revisionOnScmFailure>na</revisionOnScmFailure> -->
+				  <!-- <format>{0, number}</format>
+				  <items>
+					<item>buildNumber</item>
+				  </items> -->
+				</configuration>
+			  </plugin>
+			  <plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>${build.helper.maven.plugin.version}</version>
+				<executions>
+				  <execution>
+					<id>parse-version</id>
+					<goals>
+					  <goal>parse-version</goal>
+					</goals>
+				  </execution>
+				</executions>
+			  </plugin>		
 		</plugins>
 	</build>
 
