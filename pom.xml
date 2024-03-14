@@ -22,7 +22,7 @@
 	</properties>
 	<scm>
 		<connection>scm:git:https://github.com/maruhgar/demo-spring-boot.git</connection>
-		<developerConnection>scm:svn:github.com/maruhgar/demo-spring-boot.git</developerConnection>
+		<developerConnection>scm:git:github.com/maruhgar/demo-spring-boot.git</developerConnection>
 		<tag>HEAD</tag>
 		<url>https://github.com/maruhgar/demo-spring-boot</url>
 	  </scm>	
